@@ -1,0 +1,6 @@
+src/firmware/
+src/build/
+src/.cproject
+src/.project
+src/.settings/
+
