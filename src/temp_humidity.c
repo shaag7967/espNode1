@@ -25,7 +25,7 @@
 
 #define DHT_NUM_SAMPLES             10
 #define DHT_DELAY_QUERY_PAUSE       1000
-#define DHT_DELAY_INTERVAL			50000
+#define DHT_DELAY_INTERVAL			110000
 
 
 

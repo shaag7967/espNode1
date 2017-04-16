@@ -9,7 +9,7 @@
 #define SDS_H_
 
 
-typedef struct sdsResul_s
+typedef struct sdsResult_s
 {
 	float value_pm2_5;
 	float value_pm10;
