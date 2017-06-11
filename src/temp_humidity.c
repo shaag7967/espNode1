@@ -20,11 +20,11 @@
 
 
 #define DHT_PIN              13
-#define DHT_SENSOR_TYPE      DHT_TYPE_DHT11
+#define DHT_SENSOR_TYPE      DHT_TYPE_DHT22
 
 
 #define DHT_NUM_SAMPLES             10
-#define DHT_DELAY_QUERY_PAUSE       1000
+#define DHT_DELAY_QUERY_PAUSE       2100
 #define DHT_DELAY_INTERVAL			110000
 
 

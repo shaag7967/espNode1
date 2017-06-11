@@ -15,26 +15,16 @@
 
 typedef enum mqttTopic_e
 {
-    TOPIC_TEMP_HUMIDITY,
-    TOPIC_AIR_QUALITY
+    TOPIC_TEMPERATURE,
+    TOPIC_HUMIDITY,
+    TOPIC_DUST_PM2_5,
+    TOPIC_DUST_PM10
 } mqttTopic_e;
 
 typedef struct mqttPublishPacket_s
 {
     mqttTopic_e topic;
-    union
-    {
-        struct
-        {
-            float temperature;
-            float humidity;
-        } temp_humidity;
-        struct
-        {
-            float pm2_5;
-            float pm10;
-        } airQuality;
-    } data;
+    float value;
 } mqttPublishPacket_t;
 
 

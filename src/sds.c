@@ -51,8 +51,8 @@ const uint8_t CMD_SDS_GET_WORKING_PERIOD[] =     {0xAA, 0xB4, 0x08, 0x00, 0x00, 
 #define SDS_NUM_SAMPLES             60
 #define SDS_DELAY_INIT              2000
 #define SDS_DELAY_SENSOR_START_TIME 30000 // should be 30 seconds
-#define SDS_DELAY_QUERY_PAUSE       2000
-#define SDS_DELAY_INTERVAL          210000
+#define SDS_DELAY_QUERY_PAUSE       5000
+#define SDS_DELAY_INTERVAL          1000000
 
 typedef enum commProtocolState_e
 {

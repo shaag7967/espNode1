@@ -48,15 +48,20 @@ void task_main(void *pvParameters)
 
     mqttPublishPacket_t packet;
 
+//    gpio_enable(2, GPIO_OUTPUT); // LED
 
     while(1)
     {
+//        gpio_toggle(2);
+
     	if(xQueueReceive(sdsQueue, &sdsResult, 0) == pdTRUE)
     	{
-            packet.topic = TOPIC_AIR_QUALITY;
-            packet.data.airQuality.pm2_5 = sdsResult.value_pm2_5;
-            packet.data.airQuality.pm10 = sdsResult.value_pm10;
+            packet.topic = TOPIC_DUST_PM2_5;
+            packet.value = sdsResult.value_pm2_5;
+            xQueueSend(mqttPublishQueue, &packet, 0);
 
+            packet.topic = TOPIC_DUST_PM10;
+            packet.value = sdsResult.value_pm10;
             xQueueSend(mqttPublishQueue, &packet, 0);
 
     		printf("PM2.5: %.01f PM10: %.01f\r\n", sdsResult.value_pm2_5, sdsResult.value_pm10);
@@ -64,11 +69,13 @@ void task_main(void *pvParameters)
 
     	if(xQueueReceive(temp_humidityQueue, &tempHumidityResult, 0) == pdTRUE)
     	{
-    	    packet.topic = TOPIC_TEMP_HUMIDITY;
-    	    packet.data.temp_humidity.humidity = tempHumidityResult.humidity;
-    	    packet.data.temp_humidity.temperature = tempHumidityResult.temperature;
-
+    	    packet.topic = TOPIC_TEMPERATURE;
+    	    packet.value = tempHumidityResult.temperature;
     	    xQueueSend(mqttPublishQueue, &packet, 0);
+
+    	    packet.topic = TOPIC_HUMIDITY;
+            packet.value = tempHumidityResult.humidity;
+            xQueueSend(mqttPublishQueue, &packet, 0);
 
     		printf("Humidity: %.01f Temp.: %.01fC\r\n", tempHumidityResult.humidity, tempHumidityResult.temperature);
     	}
